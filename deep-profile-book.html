@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEEP — Entrepreneurship Hub | Profile Book</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1e30;
+    --bg-deep:#071624;
+    --bg-elevated:#0f2740;
+    --bg-card:#123049;
+    --card-hover:#173a5a;
+    --line:rgba(233,243,250,0.09);
+    --line-strong:rgba(233,243,250,0.16);
+    --text:#ecf3f9;
+    --text-dim:#93a9bd;
+    --text-faint:#5d7488;
+    --accent:#4fb7ec;
+    --accent-dim:rgba(79,183,236,0.14);
+    --yellow:#f2c230;
+
+    --e-build:#f2994a;
+    --e-team:#b085e6;
+    --e-deeptech:#4fc08d;
+    --e-corp:#45c4b0;
+    --e-vc:#f2c94c;
+    --e-support:#e8779a;
+    --e-events:#4fb7ec;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:#04121e;}
+
+  a{color:inherit;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:52px 6vw 40px;
+    background:
+      radial-gradient(ellipse 900px 420px at 15% -10%, rgba(79,183,236,0.16), transparent 60%),
+      radial-gradient(ellipse 700px 380px at 100% 0%, rgba(242,194,48,0.08), transparent 55%),
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:3px;
+    background:linear-gradient(90deg, var(--yellow), var(--accent) 55%, transparent);
+    opacity:0.85;
+  }
+  .lockups{
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+    margin-bottom:38px;
+  }
+  .lockup-esmt{
+    display:inline-flex; flex-direction:column; gap:5px;
+    padding:8px 14px 7px;
+    background:#0e3050;
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+  }
+  .lockup-esmt .word{
+    font-family:'Inter',sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:0.14em; color:#fff;
+  }
+  .lockup-esmt .rule{height:2px; width:100%; background:var(--yellow); border-radius:2px;}
+  .divider-dot{width:5px;height:5px;border-radius:50%;background:var(--text-faint);}
+  .lockup-deep{
+    display:inline-flex; align-items:baseline; gap:8px;
+  }
+  .lockup-deep .d{
+    font-family:'Fraunces',serif; font-weight:600; font-size:20px; letter-spacing:0.02em; color:var(--text);
+  }
+  .lockup-deep .sub{font-size:12px; color:var(--text-dim); font-weight:500;}
+
+  .logo-header{
+    display:inline-flex; align-items:center;
+    margin:0 0 20px;
+  }
+  .logo-header img{
+    display:block; height:64px; width:auto;
+  }
+  .hero .tagline{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(16px,1.9vw,20px);
+    color:var(--accent);
+    margin:0 0 26px;
+  }
+  .hero .stats{
+    display:flex; gap:28px; flex-wrap:wrap;
+  }
+  .stat{min-width:110px;}
+  .stat b{display:block; font-family:'Fraunces',serif; font-size:28px; font-weight:600; color:var(--text);}
+  .stat span{font-size:12.5px; color:var(--text-dim);}
+
+  /* ---------- Filter bar ---------- */
+  .filterbar{
+    position:sticky; top:0; z-index:20;
+    background:rgba(10,30,48,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding:14px 6vw;
+  }
+  .filterbar-row1{
+    display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:12px;
+  }
+  .search-wrap{
+    position:relative; flex:1 1 260px; min-width:200px;
+  }
+  .search-wrap svg{position:absolute; left:12px; top:50%; transform:translateY(-50%); opacity:0.55;}
+  #search{
+    width:100%;
+    background:var(--bg-elevated);
+    border:1px solid var(--line-strong);
+    border-radius:8px;
+    padding:10px 14px 10px 36px;
+    color:var(--text);
+    font-family:inherit; font-size:14px;
+    outline:none;
+    transition:border-color .15s;
+  }
+  #search:focus{border-color:var(--accent);}
+  #search::placeholder{color:var(--text-faint);}
+
+  select.dropdown{
+    background:var(--bg-elevated);
+    border:1px solid var(--line-strong);
+    color:var(--text);
+    font-family:inherit; font-size:13.5px;
+    padding:10px 30px 10px 12px;
+    border-radius:8px;
+    outline:none;
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2393a9bd'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 12px center;
+    cursor:pointer;
+    max-width:220px;
+  }
+  select.dropdown:focus{border-color:var(--accent);}
+
+  #clearBtn{
+    background:transparent; border:1px solid var(--line-strong); color:var(--text-dim);
+    font-family:inherit; font-size:13px; padding:10px 14px; border-radius:8px; cursor:pointer;
+    transition:.15s;
+  }
+  #clearBtn:hover{border-color:var(--accent); color:var(--accent);}
+
+  .count-pill{
+    margin-left:auto; font-size:13px; color:var(--text-dim); white-space:nowrap;
+  }
+  .count-pill b{color:var(--text);}
+
+  .chips-label{
+    font-size:11px; color:var(--text-faint); text-transform:none;
+    margin:2px 0 7px; letter-spacing:.01em;
+  }
+  .chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:7px 13px 7px 10px;
+    border-radius:20px;
+    border:1px solid var(--line-strong);
+    background:var(--bg-elevated);
+    color:var(--text-dim);
+    font-size:12.5px; font-weight:500;
+    cursor:pointer; user-select:none;
+    transition:.14s;
+  }
+  .chip .dot{width:9px;height:9px;border-radius:50%; flex:none;}
+  .chip .n{opacity:.7; font-variant-numeric:tabular-nums;}
+  .chip:hover{border-color:var(--line-strong); background:var(--card-hover);}
+  .chip.active{
+    color:var(--text);
+    background:var(--chip-color, var(--accent-dim));
+    border-color:var(--chip-color-border, var(--accent));
+  }
+
+  /* ---------- Grid ---------- */
+  main{padding:34px 6vw 80px;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+    gap:16px;
+  }
+  .card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--cat-color,var(--accent));
+    border-radius:10px;
+    padding:18px;
+    display:flex; flex-direction:column; gap:11px;
+    transition:transform .15s, border-color .15s, background .15s;
+  }
+  .card:hover{transform:translateY(-2px); background:var(--card-hover); border-color:var(--line-strong);}
+  .card-top{display:flex; gap:12px; align-items:flex-start;}
+  .mono{
+    flex:none; width:46px; height:46px; border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:600; font-size:16px;
+    background:var(--cat-color); color:#0a1e30;
+  }
+  .who{min-width:0;}
+  .who .name{font-size:15.5px; font-weight:600; color:var(--text); line-height:1.25;}
+  .who .org{font-size:12px; color:var(--text-dim); margin-top:2px;}
+  .stage-tag{
+    display:inline-flex; align-items:center;
+    font-size:11px; font-weight:600; letter-spacing:.01em;
+    padding:3px 9px; border-radius:20px;
+    color:var(--text-dim); background:var(--bg-elevated);
+    border:1px solid var(--line-strong);
+    margin-top:7px;
+  }
+  .eng-row{display:flex; flex-wrap:wrap; gap:6px;}
+  .eng-tag{
+    display:inline-flex; align-items:center; gap:5px;
+    font-size:11px; font-weight:600;
+    padding:4px 9px 4px 7px; border-radius:20px;
+    color:var(--eng-color); background:color-mix(in srgb, var(--eng-color) 15%, transparent);
+    border:1px solid color-mix(in srgb, var(--eng-color) 40%, transparent);
+  }
+  .eng-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--eng-color); flex:none;}
+  .tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{
+    font-size:11.5px; color:var(--text-dim);
+    background:var(--bg-elevated); border:1px solid var(--line);
+    padding:4px 9px; border-radius:6px;
+  }
+  .tag.expertise{color:var(--accent); border-color:rgba(79,183,236,0.3); background:rgba(79,183,236,0.08);}
+  .card-foot{margin-top:auto; padding-top:2px;}
+  .li-btn{
+    display:flex; align-items:center; gap:7px;
+    font-size:12px; font-weight:600; text-decoration:none;
+    padding:8px 12px; border-radius:7px; width:100%;
+    background:rgba(79,183,236,0.12); color:var(--accent);
+    border:1px solid rgba(79,183,236,0.3);
+    transition:.15s;
+    overflow:hidden;
+    white-space:nowrap; text-overflow:ellipsis;
+  }
+  .li-btn:hover{background:rgba(79,183,236,0.2);}
+  .li-btn.disabled{
+    background:transparent; color:var(--text-faint); border:1px dashed var(--line-strong);
+    cursor:default; pointer-events:none;
+  }
+  .li-btn svg{flex:none;}
+
+  .section-label{
+    font-size:10.5px; color:var(--text-faint); font-weight:600;
+    letter-spacing:.03em; margin-bottom:1px;
+  }
+
+  .empty{
+    display:none; text-align:center; padding:70px 20px; color:var(--text-dim);
+  }
+  .empty.show{display:block;}
+  .empty b{display:block; color:var(--text); font-family:'Fraunces',serif; font-size:19px; margin-bottom:6px; font-weight:600;}
+
+  footer{
+    padding:26px 6vw 40px; border-top:1px solid var(--line);
+    font-size:12px; color:var(--text-faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width:640px){
+    .hero{padding:40px 5vw 30px;}
+    .filterbar{padding:12px 5vw;}
+    main{padding:26px 5vw 60px;}
+    .count-pill{margin-left:0; order:5; width:100%;}
+    footer{padding:22px 5vw 34px; flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="lockups">
+    <span class="lockup-esmt"><span class="word">ESMT BERLIN</span><span class="rule"></span></span>
+    <span class="divider-dot"></span>
+    <span class="lockup-deep"><span class="d">DEEP</span><span class="sub">Institute for Deep Tech Innovation</span></span>
+  </div>
+  <div class="logo-header">
+    <img src="data:image/png;base64,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" alt="DEEP" width="290" height="94">
+  </div>
+  <p class="tagline">From exploring opportunities to building ventures</p>
+  <div class="stats">
+    <div class="stat"><b id="statTotal">39</b><span>profiles</span></div>
+    <div class="stat"><b>7</b><span>ways to engage</span></div>
+    <div class="stat"><b id="statIndustries">10</b><span>industries represented</span></div>
+  </div>
+</header>
+
+<div class="filterbar">
+  <div class="filterbar-row1">
+    <div class="search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#93a9bd" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Search by name…" autocomplete="off">
+    </div>
+    <select id="industryFilter" class="dropdown"><option value="">All industries</option></select>
+    <select id="expertiseFilter" class="dropdown"><option value="">All expertise</option></select>
+    <button id="clearBtn" type="button">Clear filters</button>
+    <span class="count-pill">Showing <b id="countNow">39</b> of <span id="countTotal">39</span></span>
+  </div>
+  <div class="chips-label">Filter by how they'd like to engage with DEEP (select any number)</div>
+  <div class="chips" id="engChips"></div>
+</div>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="emptyState"><b>No matches</b>No one fits that combination of filters yet — try clearing one.</div>
+</main>
+
+<footer>
+  <span>DEEP Venture &amp; Innovation Journey · interest-form respondents, Sept 2026</span>
+  <span>Built for internal use by the DEEP Entrepreneurship Hub</span>
+</footer>
+
+<script>
+// Engagement options, in priority order (used to pick each card's primary/border color
+// when someone selected more than one — founders and team-seekers rank above "join events",
+// since almost everyone ticks that one and it's the least distinguishing signal).
+const ENGAGEMENT = [
+  { key:"Build my own venture",                              short:"Build my own venture",           color:"var(--e-build)"   },
+  { key:"Join a venture team / find co-founders",             short:"Join a team / find co-founders", color:"var(--e-team)"    },
+  { key:"Explore a research technology or deep-tech opportunity", short:"Deep-tech / research",        color:"var(--e-deeptech)"},
+  { key:"Work on a corporate innovation challenges",           short:"Corporate innovation challenge", color:"var(--e-corp)"    },
+  { key:"Explore venture capital opportunities",               short:"Explore VC",                     color:"var(--e-vc)"      },
+  { key:"Support an existing startup or venture",              short:"Support an existing startup",     color:"var(--e-support)"},
+  { key:"Join events and learn more about entrepreneurship",   short:"Join events / learn",             color:"var(--e-events)" },
+];
+const ENG_COLOR = Object.fromEntries(ENGAGEMENT.map(e=>[e.key,e.color]));
+const ENG_SHORT = Object.fromEntries(ENGAGEMENT.map(e=>[e.key,e.short]));
+const ENG_ORDER = ENGAGEMENT.map(e=>e.key);
+
+// name, stage (their old journey-stage grouping — now shown as a plain tag),
+// industries[], expertise, email, engagement[] (their picks from
+// "How would you most like to engage with DEEP?", full option text)
+const PEOPLE = [
+{"name":"Andrea Paganelli","stage":"Already Building","industries":["AI & Computing"],"expertise":"Business model / strategy","email":"andrea.paganelli@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders","Explore venture capital opportunities","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Jan Krupiniewicz","stage":"Already Building","industries":["Education"],"expertise":"Product / technology","email":"jan.krupiniewicz@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders"]},
+{"name":"Jose Pablo Garcia Andrade","stage":"Already Building","industries":["Fashion, Design & Crafts"],"expertise":"Design / user experience","email":"pablo.garciaandrade@esmt.berlin","engagement":["Explore a research technology or deep-tech opportunity","Join events and learn more about entrepreneurship","Build my own venture"]},
+{"name":"Magizhan Chinnasami Bharani","stage":"Idea-stage Founder","industries":["Natural Capital & AgTech"],"expertise":"Design / user experience","email":"magizhan.chinnasamibharani@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders","Join events and learn more about entrepreneurship"]},
+{"name":"Kavisha","stage":"Idea-stage Founder","industries":["Fashion, Design & Crafts"],"expertise":"Design / user experience","email":"Kavishadesai03@gmail.com","engagement":["Build my own venture","Explore venture capital opportunities","Join events and learn more about entrepreneurship"]},
+{"name":"Eldar Aliyev","stage":"Idea-stage Founder","industries":["AI & Computing"],"expertise":"Business model / strategy","email":"eldar.aliyev@esmt.berlin","engagement":["Explore venture capital opportunities","Work on a corporate innovation challenges","Join events and learn more about entrepreneurship","Join a venture team / find co-founders","Build my own venture","Support an existing startup or venture"]},
+{"name":"Georgios Zelenitsas","stage":"Idea-stage Founder","industries":["Industrial / B2B"],"expertise":"Customer and market research","email":"georgios.zelenitsas@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders","Explore a research technology or deep-tech opportunity","Explore venture capital opportunities","Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Nicolò Terraneo","stage":"Idea-stage Founder","industries":["Industrial / B2B"],"expertise":"Business model / strategy","email":"nicolo.terraneo@esmt.berlin","engagement":["Explore venture capital opportunities","Build my own venture","Support an existing startup or venture"]},
+{"name":"Boris Stein","stage":"Idea-stage Founder","industries":["AI & Computing"],"expertise":"Customer and market research","email":"boris.stein@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders","Join events and learn more about entrepreneurship","Explore venture capital opportunities"]},
+{"name":"Leonardo Bressan","stage":"Idea-stage Founder","industries":["Supplier Sourcing"],"expertise":"Business model / strategy","email":"leonardo.bressan@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders","Support an existing startup or venture","Join events and learn more about entrepreneurship","Explore venture capital opportunities","Work on a corporate innovation challenges","Explore a research technology or deep-tech opportunity"]},
+{"name":"Lennart Streilein","stage":"Idea-stage Founder","industries":["AI & Computing"],"expertise":"Business model / strategy","email":"lennart.streilein@esmt.berlin","engagement":["Explore a research technology or deep-tech opportunity","Build my own venture","Join events and learn more about entrepreneurship","Work on a corporate innovation challenges"]},
+{"name":"Christopher Wendt","stage":"Idea-stage Founder","industries":["AI & Computing"],"expertise":"Product / technology","email":"christopher.wendt@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders","Explore a research technology or deep-tech opportunity","Join events and learn more about entrepreneurship"]},
+{"name":"Lucrezia Lodi","stage":"Aspiring Founder","industries":["Industrial / B2B"],"expertise":"Sales / partnerships","email":"lucrezia.lodi@esmt.berlin","engagement":["Join events and learn more about entrepreneurship","Build my own venture","Join a venture team / find co-founders","Explore venture capital opportunities","Work on a corporate innovation challenges","Support an existing startup or venture"]},
+{"name":"Giulia Amatore","stage":"Aspiring Founder","industries":["Health & Life Sciences","Fashion, Design & Crafts"],"expertise":"Sales / partnerships","email":"giulia.amatore@esmt.berlin","engagement":["Join a venture team / find co-founders","Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship","Explore venture capital opportunities","Build my own venture"]},
+{"name":"Liubov Saksonova","stage":"Aspiring Founder","industries":["AI & Computing"],"expertise":"Business model / strategy","email":"liubov.saksonova@esmt.berlin","engagement":["Build my own venture","Work on a corporate innovation challenges","Join events and learn more about entrepreneurship"]},
+{"name":"Cara Rolfs","stage":"Aspiring Founder","industries":["Health & Life Sciences"],"expertise":"Sales / partnerships","email":"cara.rolfs@esmt.berlin","engagement":["Build my own venture","Join a venture team / find co-founders","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Faiz Firoz Ansari","stage":"Aspiring Founder","industries":["Industrial / B2B"],"expertise":"Business model / strategy","email":"faizfiroz.ansari@esmt.berlin","engagement":["Build my own venture"]},
+{"name":"Niharika Joshi","stage":"Aspiring Founder","industries":["Education"],"expertise":"Customer and market research","email":"niharika.joshi@esmt.berlin","engagement":["Support an existing startup or venture","Work on a corporate innovation challenges","Build my own venture"]},
+{"name":"Béla von Wangenheim","stage":"Team joiner/Co-founder seeker","industries":["Cyber & Defence"],"expertise":"Corporate innovation experience / Use case & business case development","email":"bela.vonwangenheim@esmt.berlin","engagement":["Join a venture team / find co-founders","Explore a research technology or deep-tech opportunity","Explore venture capital opportunities","Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Elif Savar","stage":"Team joiner/Co-founder seeker","industries":["Natural Capital & AgTech"],"expertise":"Operations","email":"elif.savar@esmt.berlin","engagement":["Join a venture team / find co-founders","Explore a research technology or deep-tech opportunity","Explore venture capital opportunities","Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Yashi Gakhar","stage":"Team joiner/Co-founder seeker","industries":["FMCG"],"expertise":"Customer and market research","email":"Gakharyashi@gmail.com","engagement":["Support an existing startup or venture","Join events and learn more about entrepreneurship","Work on a corporate innovation challenges","Explore a research technology or deep-tech opportunity","Join a venture team / find co-founders"]},
+{"name":"Hasan Yücel","stage":"Team joiner/Co-founder seeker","industries":["AI & Computing"],"expertise":"Data analysis (Python, R, Excel)","email":"hasan.yucel@esmt.berlin","engagement":["Explore a research technology or deep-tech opportunity","Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship","Join a venture team / find co-founders","Explore venture capital opportunities"]},
+{"name":"Lola Monroy Mir","stage":"Team joiner/Co-founder seeker","industries":["AI & Computing"],"expertise":"Sales / partnerships","email":"lola.monroymir@esmt.berlin","engagement":["Join a venture team / find co-founders","Explore venture capital opportunities","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Maxime Knof","stage":"Team joiner/Co-founder seeker","industries":["Cyber & Defence"],"expertise":"Business model / strategy","email":"maxime.knof@esmt.berlin","engagement":["Join a venture team / find co-founders","Explore venture capital opportunities","Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Sergi Garcia","stage":"Explorer/Supporter","industries":["AI & Computing"],"expertise":"Design / user experience","email":"sergi.garciac4886@gmail.com","engagement":["Explore a research technology or deep-tech opportunity","Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Elias Altman","stage":"Explorer/Supporter","industries":["Cyber & Defence"],"expertise":"Business model / strategy","email":"elias.altman@esmt.berlin","engagement":["Explore a research technology or deep-tech opportunity","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Beatrice von Kindt Rohde","stage":"Explorer/Supporter","industries":["Health & Life Sciences"],"expertise":"Customer and market research","email":"Beatrice.kindt@esmt.berlin","engagement":["Explore venture capital opportunities","Join events and learn more about entrepreneurship","Work on a corporate innovation challenges","Explore a research technology or deep-tech opportunity"]},
+{"name":"Xueying Chen","stage":"Explorer/Supporter","industries":["Health & Life Sciences"],"expertise":"Business model / strategy","email":"xueying.chen@esmt.berlin","engagement":["Support an existing startup or venture","Explore a research technology or deep-tech opportunity"]},
+{"name":"Shruti Betala","stage":"Explorer/Supporter","industries":["Industrial / B2B"],"expertise":"Sales / partnerships","email":"Shruti.betala@esmt.berlin","engagement":["Work on a corporate innovation challenges","Support an existing startup or venture","Join events and learn more about entrepreneurship"]},
+{"name":"Alyan Ahmed","stage":"Explorer/Supporter","industries":["AI & Computing"],"expertise":"Business model / strategy","email":"alyan.ahmed@esmt.berlin","engagement":["Explore venture capital opportunities","Join events and learn more about entrepreneurship"]},
+{"name":"Domonkos Sohar","stage":"Explorer/Supporter","industries":["Health & Life Sciences"],"expertise":"Business model / strategy","email":"domonkos.sohar@esmt.berlin","engagement":["Explore a research technology or deep-tech opportunity","Explore venture capital opportunities","Work on a corporate innovation challenges","Join events and learn more about entrepreneurship"]},
+{"name":"Anon","stage":"Aspiring Founder","industries":["Real Estate / PropTech"],"expertise":"Industry expertise","email":"","engagement":["Build my own venture","Join a venture team / find co-founders","Work on a corporate innovation challenges","Join events and learn more about entrepreneurship"]},
+{"name":"Anon","stage":"Idea-stage Founder","industries":["Industrial / B2B"],"expertise":"Industry expertise","email":"","engagement":["Build my own venture","Join events and learn more about entrepreneurship"]},
+{"name":"Anon","stage":"Already Building","industries":["Health & Life Sciences"],"expertise":"Business model / strategy","email":"","engagement":["Build my own venture","Join a venture team / find co-founders","Join events and learn more about entrepreneurship"]},
+{"name":"Anon","stage":"Idea-stage Founder","industries":["Real Estate / PropTech"],"expertise":"Sales / partnerships","email":"","engagement":["Build my own venture"]},
+{"name":"Anon","stage":"Team joiner/Co-founder seeker","industries":["Health & Life Sciences"],"expertise":"Business model / strategy","email":"","engagement":["Join a venture team / find co-founders","Explore a research technology or deep-tech opportunity","Work on a corporate innovation challenges","Explore venture capital opportunities"]},
+{"name":"Anon","stage":"Idea-stage Founder","industries":["Industrial / B2B"],"expertise":"Business model / strategy","email":"","engagement":["Join a venture team / find co-founders","Build my own venture","Join events and learn more about entrepreneurship","Support an existing startup or venture"]},
+{"name":"Anon","stage":"Already Building","industries":["Fashion, Design & Crafts"],"expertise":"Design / user experience","email":"","engagement":["Build my own venture","Explore a research technology or deep-tech opportunity"]},
+{"name":"Anon","stage":"Already Building","industries":["Industrial / B2B"],"expertise":"Business model / strategy","email":"","engagement":["Explore a research technology or deep-tech opportunity","Build my own venture","Explore venture capital opportunities"]}
+];
+
+document.getElementById('statTotal').textContent = PEOPLE.length;
+document.getElementById('countTotal').textContent = PEOPLE.length;
+
+function initials(name){
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if(parts.length===1) return parts[0].slice(0,2).toUpperCase();
+  return (parts[0][0]+parts[parts.length-1][0]).toUpperCase();
+}
+
+function primaryEngagement(person){
+  for(const key of ENG_ORDER){ if(person.engagement.includes(key)) return key; }
+  return null;
+}
+
+// simple ordered-subsequence fuzzy match, case-insensitive
+function fuzzyMatch(query, target){
+  if(!query) return true;
+  query = query.toLowerCase(); target = target.toLowerCase();
+  if(target.includes(query)) return true;
+  let qi=0;
+  for(let i=0;i<target.length && qi<query.length;i++){
+    if(target[i]===query[qi]) qi++;
+  }
+  return qi===query.length;
+}
+
+// ---- build filter controls ----
+const chipsEl = document.getElementById('engChips');
+const activeEng = new Set();
+ENGAGEMENT.forEach(e=>{
+  const count = PEOPLE.filter(p=>p.engagement.includes(e.key)).length;
+  const chip = document.createElement('div');
+  chip.className='chip';
+  chip.style.setProperty('--chip-color', `color-mix(in srgb, ${e.color} 20%, transparent)`);
+  chip.style.setProperty('--chip-color-border', e.color);
+  chip.innerHTML = `<span class="dot" style="background:${e.color}"></span>${e.short} <span class="n">${count}</span>`;
+  chip.addEventListener('click', ()=>{
+    chip.classList.toggle('active');
+    if(activeEng.has(e.key)) activeEng.delete(e.key); else activeEng.add(e.key);
+    render();
+  });
+  chipsEl.appendChild(chip);
+});
+
+const industries = [...new Set(PEOPLE.flatMap(p=>p.industries))].sort();
+document.getElementById('statIndustries').textContent = industries.length;
+const industrySel = document.getElementById('industryFilter');
+industries.forEach(i=>{
+  const o=document.createElement('option'); o.value=i; o.textContent=i; industrySel.appendChild(o);
+});
+
+const expertises = [...new Set(PEOPLE.map(p=>p.expertise))].sort();
+const expertiseSel = document.getElementById('expertiseFilter');
+expertises.forEach(e=>{
+  const o=document.createElement('option'); o.value=e; o.textContent=e; expertiseSel.appendChild(o);
+});
+
+const searchEl = document.getElementById('search');
+const gridEl = document.getElementById('grid');
+const emptyEl = document.getElementById('emptyState');
+const countEl = document.getElementById('countNow');
+
+function card(p){
+  const primary = primaryEngagement(p);
+  const color = primary ? ENG_COLOR[primary] : 'var(--accent)';
+  const li = p.email
+    ? `<a class="li-btn" href="mailto:${p.email}">${liIcon()}${p.email}</a>`
+    : `<span class="li-btn disabled">${liIcon()}No email on file</span>`;
+  const engTags = p.engagement
+    .slice().sort((a,b)=>ENG_ORDER.indexOf(a)-ENG_ORDER.indexOf(b))
+    .map(k=>`<span class="eng-tag" style="--eng-color:${ENG_COLOR[k]}"><span class="dot"></span>${ENG_SHORT[k]}</span>`)
+    .join('');
+  const tags = p.industries.map(t=>`<span class="tag">${t}</span>`).join('')
+    + `<span class="tag expertise">${p.expertise}</span>`;
+  const el = document.createElement('div');
+  el.className='card';
+  el.style.setProperty('--cat-color', color);
+  el.innerHTML = `
+    <div class="card-top">
+      <div class="mono">${initials(p.name)}</div>
+      <div class="who">
+        <div class="name">${p.name}</div>
+        <div class="org">ESMT Berlin · Master's student</div>
+        <span class="stage-tag">${p.stage}</span>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">WANTS TO</div>
+      <div class="eng-row">${engTags}</div>
+    </div>
+    <div class="tags">${tags}</div>
+    <div class="card-foot">${li}</div>
+  `;
+  return el;
+}
+function liIcon(){
+  return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.2"/><path d="M3 6.5l9 6.2 9-6.2"/></svg>`;
+}
+
+function render(){
+  const q = searchEl.value.trim();
+  const ind = industrySel.value;
+  const exp = expertiseSel.value;
+  const filtered = PEOPLE.filter(p=>{
+    if(activeEng.size && ![...activeEng].some(k=>p.engagement.includes(k))) return false;
+    if(ind && !p.industries.includes(ind)) return false;
+    if(exp && p.expertise!==exp) return false;
+    if(q && !fuzzyMatch(q, p.name)) return false;
+    return true;
+  });
+  gridEl.innerHTML='';
+  filtered.forEach(p=>gridEl.appendChild(card(p)));
+  countEl.textContent = filtered.length;
+  emptyEl.classList.toggle('show', filtered.length===0);
+}
+
+searchEl.addEventListener('input', render);
+industrySel.addEventListener('change', render);
+expertiseSel.addEventListener('change', render);
+document.getElementById('clearBtn').addEventListener('click', ()=>{
+  searchEl.value=''; industrySel.value=''; expertiseSel.value='';
+  activeEng.clear();
+  chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
